@@ -10,6 +10,8 @@ import {
   User,
   Users,
   X,
+  Inbox,
+  UserPlus,
 } from "lucide-react"
 
 interface AppSidebarProps {
@@ -29,6 +31,18 @@ export function AppSidebar({ open, onClose }: AppSidebarProps) {
       show: true,
     },
     { label: "My Todos", href: "/dashboard/todos", icon: ListTodo, show: true },
+    {
+      label: "Assigned to Me",
+      href: "/dashboard/assigned-tasks",
+      icon: Inbox,
+      show: true,
+    },
+    {
+      label: "My Assignments",
+      href: "/dashboard/my-assignments",
+      icon: UserPlus,
+      show: isManagerOrAdmin,
+    },
     {
       label: "Profile",
       href: "/dashboard/profile",

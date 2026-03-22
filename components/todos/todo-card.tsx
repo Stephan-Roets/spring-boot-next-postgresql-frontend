@@ -2,7 +2,7 @@
 
 import type { Todo } from "@/lib/types"
 import { format } from "date-fns"
-import { Pencil, Trash2, Calendar, Tag } from "lucide-react"
+import { Pencil, Trash2, Calendar, Tag, UserCheck, UserCog } from "lucide-react"
 
 interface TodoCardProps {
   todo: Todo
@@ -62,6 +62,18 @@ export function TodoCard({ todo, onEdit, onDelete }: TodoCardProps) {
               <span className="flex items-center gap-1 text-xs text-muted-foreground">
                 <Calendar className="h-3 w-3" />
                 {format(new Date(todo.dueDate), "MMM d, yyyy")}
+              </span>
+            )}
+            {todo.assignedByName && (
+              <span className="flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400">
+                <UserCog className="h-3 w-3" />
+                From: {todo.assignedByName}
+              </span>
+            )}
+            {todo.assignedToName && (
+              <span className="flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400">
+                <UserCheck className="h-3 w-3" />
+                To: {todo.assignedToName}
               </span>
             )}
           </div>
