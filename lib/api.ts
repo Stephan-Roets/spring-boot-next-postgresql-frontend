@@ -155,6 +155,64 @@ class ApiClient {
   async getTodoStats() {
     return this.request<TodoStats>("/api/todos/stats")
   }
+
+  // Task Assignment
+  async assignTask(data: {
+    assigneeId: string
+    title: string
+    description?: string
+    category?: string
+    priority?: string
+    dueDate?: string
+  }) {
+    return this.request<Todo>("/api/tasks/assign", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+  }
+
+  async getAssignedToMe() {
+    return this.request<Todo[]>("/api/tasks/assigned-to-me")
+  }
+
+  async getAssignedByMe() {
+    return this.request<Todo[]>("/api/tasks/assigned-by-me")
+  }
+
+  async submitTaskReport(todoId: string, data: {
+    reportType: string
+    message: string
+  }) {
+    return this.request<TaskReport>(`/api/tasks/${todoId}/report`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+  }
+
+  async provideFeedback(reportId: string, feedbackMessage: string) {
+    return this.request<TaskReport>(`/api/tasks/reports/${reportId}/feedback`, {
+      method: "POST",
+      body: JSON.stringify({ feedbackMessage }),
+    })
+  }
+
+  async extendDeadline(todoId: string, data: {
+    newDueDate: string
+    reason?: string
+  }) {
+    return this.request<Todo>(`/api/tasks/${todoId}/extend-deadline`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+    })
+  }
+
+  async getTaskReports(todoId: string) {
+    return this.request<TaskReport[]>(`/api/tasks/${todoId}/reports`)
+  }
+
+  async getAssignableUsers() {
+    return this.request<User[]>("/api/tasks/assignable-users")
+  }
 }
 
 export const api = new ApiClient()

@@ -40,6 +40,22 @@ export interface TodoStats {
   done: number
 }
 
+export interface TaskReport {
+  id: string
+  todoId: string
+  todoTitle: string
+  reporterId: string
+  reporterName: string
+  reportType: "PROGRESS_UPDATE" | "COMPLETION_REPORT" | "ISSUE_REPORT"
+  message: string
+  feedbackMessage: string | null
+  feedbackById: string | null
+  feedbackByName: string | null
+  feedbackAt: string | null
+  createdAt: string
+  updatedAt: string
+}
+
 export interface ApiError {
   timestamp: string
   status: number
