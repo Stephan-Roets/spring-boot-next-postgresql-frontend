@@ -50,7 +50,12 @@ export function AssignTaskDialog({ onClose, onSuccess }: AssignTaskDialogProps) 
 
     setLoading(true)
     try {
-      await api.assignTask(formData)
+      // Convert datetime-local to ISO string if dueDate is provided
+      const payload = {
+        ...formData,
+        dueDate: formData.dueDate ? new Date(formData.dueDate).toISOString() : undefined,
+      }
+      await api.assignTask(payload)
       toast.success("Task assigned successfully")
       onSuccess()
       onClose()
