@@ -55,12 +55,12 @@ export function AppSidebar({ open, onClose }: AppSidebarProps) {
       href: "/dashboard/users",
       icon: Users,
       show: isManagerOrAdmin,
+    },
     {
       label: "User Guide",
       href: "/dashboard/help",
       icon: BookOpen,
       show: true,
-    },
     },
   ]
 
