@@ -12,6 +12,7 @@ import {
   X,
   Inbox,
   UserPlus,
+  BookOpen,
 } from "lucide-react"
 
 interface AppSidebarProps {
@@ -54,6 +55,12 @@ export function AppSidebar({ open, onClose }: AppSidebarProps) {
       href: "/dashboard/users",
       icon: Users,
       show: isManagerOrAdmin,
+    {
+      label: "User Guide",
+      href: "/dashboard/help",
+      icon: BookOpen,
+      show: true,
+    },
     },
   ]
 

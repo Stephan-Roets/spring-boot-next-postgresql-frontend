@@ -93,11 +93,11 @@ export default function LandingPage() {
               <CheckCircle2 className="h-5 w-5 text-primary" />
             </div>
             <h3 className="text-base font-semibold text-card-foreground">
-              Task Management
+              Easy Task Management
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Create, organize, and track todos with priorities, categories, due
-              dates, and status tracking.
+              Create to-do lists, set deadlines, mark priorities, and track what's done.
+              Everything you need to stay organized in one simple place.
             </p>
           </div>
           <div className="rounded-xl border bg-card p-6">
@@ -105,11 +105,11 @@ export default function LandingPage() {
               <Users className="h-5 w-5 text-primary" />
             </div>
             <h3 className="text-base font-semibold text-card-foreground">
-              Team Roles
+              Team Collaboration
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Three distinct roles: Users manage tasks, Managers edit user
-              profiles, Admins have full control.
+              Assign tasks to team members, track their progress, and provide feedback.
+              Managers and admins can oversee the entire team's work.
             </p>
           </div>
           <div className="rounded-xl border bg-card p-6">
@@ -117,11 +117,11 @@ export default function LandingPage() {
               <Shield className="h-5 w-5 text-primary" />
             </div>
             <h3 className="text-base font-semibold text-card-foreground">
-              Secure Auth
+              Safe & Secure
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              JWT-based authentication with email verification. Tokens expire in
-              30 minutes for maximum security.
+              Your account is protected with email verification and secure login.
+              Only you and your team can see your tasks.
             </p>
           </div>
         </div>
