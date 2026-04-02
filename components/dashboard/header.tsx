@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { useAuth } from "@/contexts/auth-context"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
@@ -11,8 +12,13 @@ interface HeaderProps {
 
 export function DashboardHeader({ onMenuClick }: HeaderProps) {
   const { user, logout } = useAuth()
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const router = useRouter()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleLogout = () => {
     logout()
@@ -44,18 +50,20 @@ export function DashboardHeader({ onMenuClick }: HeaderProps) {
         </div>
       </div>
       <div className="flex items-center gap-2">
-        <button
-          onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-          className="rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
-          aria-label="Toggle theme"
-        >
-          {resolvedTheme === "dark" ? (
-            <Sun className="h-4 w-4" />
-          ) : (
-            <Moon className="h-4 w-4" />
-          )}
-          <span className="sr-only">Toggle theme</span>
-        </button>
+        {mounted && (
+          <button
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            className="rounded-lg p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+            <span className="sr-only">Toggle theme</span>
+          </button>
+        )}
         <div className="hidden items-center gap-2 rounded-lg border bg-muted/50 px-3 py-1.5 sm:flex">
           <span className="text-xs font-medium text-foreground">
             {user?.name}
